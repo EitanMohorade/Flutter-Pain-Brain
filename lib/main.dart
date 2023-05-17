@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/Page1.dart';
+import 'package:my_app/layouts/navBar.dart';
 
 void main() {
   runApp(const MyApp());
-  //   const MaterialApp(
-  //     home: Page1(),
-  //   ),
-  // );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  static const appTitle = 'Drawer Demo';
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Page1(),
+      debugShowCheckedModeBanner: false,
+      title: appTitle,
+      home: NavBar(title: appTitle, cosa: Scaffold(),),
     );
   }
 }

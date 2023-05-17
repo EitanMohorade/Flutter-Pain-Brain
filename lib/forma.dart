@@ -1,16 +1,23 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:my_app/layouts/navBar.dart';
 
-class Page2 extends StatelessWidget {
-  const Page2({super.key});
+class Forma extends StatelessWidget {
+  const Forma({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: const Center(
-        child: AnimatedContainerApp(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false, 
+      home: NavBar(
+        title: 'Forma',
+        cosa: Scaffold(
+          
+          appBar: AppBar(),
+          body: const Center(
+            child: AnimatedContainerApp(),
+          ),
+        ),
       ),
     );
   }
