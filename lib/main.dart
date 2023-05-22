@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: appTitle,
-      home: NavBar(title: appTitle, cosa: Scaffold(),),
+      home: NavBar(title: appTitle),
     );
   }
 }

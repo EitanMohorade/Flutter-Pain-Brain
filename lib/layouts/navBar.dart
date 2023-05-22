@@ -6,16 +6,14 @@ import '../forma.dart';
 import '../images.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar({super.key, required this.title, required this.cosa});
+  const NavBar({super.key, required this.title});
   //NO FUNCIONA COMO QUERIA LA COSA
   final String title;
-  final Scaffold cosa;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      backgroundColor: Colors.amberAccent,
       body: const Center(
         child: null,
       ),
@@ -35,29 +33,20 @@ class NavBar extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Boton'),
-              onLongPress: () {
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context)=> const PageOne()),
-                );
+              onTap: () {
+                Navigator.of(context).push(_createRoute(const BotonLol()));
               },
             ),
             ListTile(
               title: const Text('Formas randoms'),
-              onLongPress: () {
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context)=> const Forma()),
-                );
+              onTap: () {
+                Navigator.of(context).push(_createRoute(const Forma()));
               },
             ),
             ListTile(
               title: const Text('Imagenes'),
-              onLongPress: () {
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context)=> const ShowImages()),
-                );
+              onTap: () {
+                Navigator.of(context).push(_createRoute(const ShowImages()));
               },
             ),
           ],
@@ -65,4 +54,63 @@ class NavBar extends StatelessWidget {
       ),
     );
   }
+}
+
+class MyHomePageState extends StatefulWidget {
+  final String title;
+
+  const MyHomePageState({
+    super.key,
+    required this.title,
+  });
+
+  @override
+  State<MyHomePageState> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePageState> {
+  bool _visible = true;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: AnimatedOpacity(
+        opacity: _visible ? 1.0 : 0.0,
+        duration: const Duration(milliseconds: 500),
+        child: Container(
+          width: 200.0,
+          height: 200.0,
+          color: Colors.cyanAccent,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _visible = !_visible;
+          });
+        },
+        tooltip: 'dar opacidad',
+        child: const Icon(Icons.flip),
+      ),
+    );
+  }
+}
+
+Route _createRoute(Widget widget) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => widget,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      final tween = Tween(begin: begin, end: end);
+      final offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
 }
