@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_app/layouts/navBar.dart';
 
 void main() {
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    return const Material();
+  };
   runApp(const MyApp());
 }
 
@@ -15,7 +18,10 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: appTitle,
-      home: NavBar(title: appTitle, cosa: Scaffold(),),
+      home: NavBar(
+        title: appTitle,
+        cosa: Scaffold(),
+      ),
     );
   }
 }
