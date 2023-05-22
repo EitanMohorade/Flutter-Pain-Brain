@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_app/layouts/navBar.dart';
 
 void main() {
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    return const Material();
+  };
   runApp(const MyApp());
 }
 
