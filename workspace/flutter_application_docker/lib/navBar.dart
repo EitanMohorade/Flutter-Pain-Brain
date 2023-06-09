@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_docker/baserow.dart';
 import 'package:flutter_application_docker/websocket.dart';
 
+import 'alphaVantage.dart';
+
 class NavBar extends StatelessWidget {
   const NavBar({super.key, required this.title});
   //NO FUNCIONA COMO QUERIA LA COSA
@@ -41,6 +43,12 @@ class NavBar extends StatelessWidget {
                 Navigator.of(context).push(_createRoute(const WebSocket(
                   title: 'WebSocket',
                 )));
+              },
+            ),
+            ListTile(
+              title: const Text('Alpha Vantage connection'),
+              onTap: () {
+                Navigator.of(context).push(_createRoute(const AlphaVantage()));
               },
             ),
           ],

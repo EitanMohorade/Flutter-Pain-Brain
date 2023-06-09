@@ -16,7 +16,7 @@ class WebSocket extends StatefulWidget {
 class _WebSocketState extends State<WebSocket> {
   final _channel = WebSocketChannel.connect(
     Uri.parse(
-        'wss://api.baserow.io/ws/coret_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2MTYzMTEwLCJpYXQiOjE2ODYxNjI1MTAsImp0aSI6IjA2ODI0ZmY1MWRmMDQ3OTg5ZWI4MGFmMTNiYjU1YmE5IiwidXNlcl9pZCI6MzQ5NzZ9.4CAO4bBTnO_LSO1Fue7_sxPrX5oUSYRXIFawU1MVL-g'),
+        'wss://api.baserow.io/ws/core/?jwt_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg2MTYzMTEwLCJpYXQiOjE2ODYxNjI1MTAsImp0aSI6IjA2ODI0ZmY1MWRmMDQ3OTg5ZWI4MGFmMTNiYjU1YmE5IiwidXNlcl9pZCI6MzQ5NzZ9.4CAO4bBTnO_LSO1Fue7_sxPrX5oUSYRXIFawU1MVL-g'),
   );
 
   @override

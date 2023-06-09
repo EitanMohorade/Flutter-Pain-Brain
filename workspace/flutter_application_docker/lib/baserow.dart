@@ -49,7 +49,7 @@ class _BaserowState extends State<Baserow> {
           future: futurDataFromBaserow,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text(snapshot.data!.name);
+              return Text(snapshot.data!.address);
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
             }
@@ -64,13 +64,45 @@ class _BaserowState extends State<Baserow> {
 }
 
 class Ejemplo {
-  final String name;
+  int id;
+  String order;
+  String name;
+  String notes;
+  String address;
+  String walkability;
+  String transit;
+  String built;
 
-  Ejemplo({required this.name});
+  Ejemplo({
+    required this.id,
+    required this.order,
+    required this.name,
+    required this.notes,
+    required this.address,
+    required this.walkability,
+    required this.transit,
+    required this.built,
+  });
 
-  factory Ejemplo.fromJson(Map<String, dynamic> json) {
-    return Ejemplo(
-      name: json['Name'] as String,
-    );
-  }
+  factory Ejemplo.fromJson(Map<String, dynamic> json) => Ejemplo(
+        id: json["id"],
+        order: json["order"],
+        name: json["Name"],
+        notes: json["Notes"],
+        address: json["Address"],
+        walkability: json["Walkability"],
+        transit: json["Transit"],
+        built: json["Built"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "order": order,
+        "Name": name,
+        "Notes": notes,
+        "Address": address,
+        "Walkability": walkability,
+        "Transit": transit,
+        "Built": built,
+      };
 }
