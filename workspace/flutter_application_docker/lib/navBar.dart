@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_docker/baserow.dart';
 import 'package:flutter_application_docker/websocket.dart';
-import 'package:flutter_application_docker/jwtToken.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key, required this.title});
@@ -29,12 +28,6 @@ class NavBar extends StatelessWidget {
                 color: Colors.greenAccent,
               ),
               child: null,
-            ),
-            ListTile(
-              title: const Text('JWT Token'),
-              onTap: () {
-                Navigator.of(context).push(_createRoute(const JwtToken()));
-              },
             ),
             ListTile(
               title: const Text('Baserow connection'),
